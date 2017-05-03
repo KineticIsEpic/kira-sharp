@@ -49,6 +49,7 @@ namespace KiraSharp {
             Logger.Write("Moving servo " + servo.ToString() + "to " + loc.ToString());
 
             serial.Setservo(servo, loc, time);
+            serial.Run();
         }
 
         bool icnct = false;

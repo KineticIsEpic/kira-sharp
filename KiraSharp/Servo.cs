@@ -18,18 +18,30 @@ namespace KiraSharp {
         public event servoevthdlr degchange;
         public event servoevthdlr tmchange;
 
+        Timer autotime = new Timer();
+
         public bool isauto = false;
 
         public int servonumber = 0;
         public int location = 90;
         public int mvtime = 1000;
 
+        private bool changed = false;
+
         public Servo() {
             InitializeComponent();
+
+            autotime.Tick += Autotime_Tick;
+            autotime.Interval = 50;
+            autotime.Enabled = true;
         }
 
         public Servo(string name, int servoindex, int defloc) {
             InitializeComponent();
+
+            autotime.Tick += Autotime_Tick;
+            autotime.Interval = 55;
+            autotime.Enabled = true;
 
             title.Text = name;
             location = defloc;
@@ -41,12 +53,25 @@ namespace KiraSharp {
         public Servo(int servoindex) {
             InitializeComponent();
 
+            autotime.Tick += Autotime_Tick;
+            autotime.Interval = 50;
+            autotime.Enabled = true;
+
             title.Text = servoindex.ToString();
             servonumber = servoindex;
         }
 
         public void setText(string text) {
             title.Text = text;
+        }
+
+        private void Autotime_Tick(object sender, EventArgs e) {
+            if (isauto && changed) {
+                try { degchange.Invoke(servonumber, posbar.Value, 50); }
+                catch (Exception) { }
+
+                changed = false;
+            }
         }
 
         private void autobtn_Click(object sender, EventArgs e) {
@@ -56,10 +81,7 @@ namespace KiraSharp {
         }
 
         private void posbar_Scroll(object sender, EventArgs e) {
-            if (isauto) {
-                try { degchange.Invoke(servonumber, posbar.Value, spdbar.Value); }
-                catch (Exception) { }
-            }
+            if (isauto) changed = true;
         }
     }
 }

@@ -67,17 +67,6 @@ namespace KiraSharp {
         }
 
         /// <summary>
-        /// Disconnect any connected device.
-        /// </summary>
-        public void Disconnect() {
-            serial.Close();
-            devname = "";
-            isopen = false;
-
-            Logger.Write("Serial disconnected.");
-        }
-
-        /// <summary>
         /// Make a new KiraSerial without opening a communication port.
         /// </summary>
         public KiraSerial() { }
@@ -111,6 +100,17 @@ namespace KiraSharp {
             if (bdrate != 0) rate = bdrate;
 
             Open();
+        }
+
+        /// <summary>
+        /// Disconnect any connected device.
+        /// </summary>
+        public void Disconnect() {
+            serial.Close();
+            devname = "";
+            isopen = false;
+
+            Logger.Write("Serial disconnected.");
         }
 
         public string[] Getservos() {
