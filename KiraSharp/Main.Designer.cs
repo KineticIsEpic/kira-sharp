@@ -26,15 +26,15 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.servostab = new System.Windows.Forms.TabPage();
             this.servopanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.debugtab = new System.Windows.Forms.TabPage();
+            this.clrlogbtn = new System.Windows.Forms.Button();
+            this.debugbox = new System.Windows.Forms.TextBox();
+            this.rdlogbtn = new System.Windows.Forms.Button();
+            this.logwrtbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cnctbtn = new System.Windows.Forms.Button();
-            this.debugtab = new System.Windows.Forms.TabPage();
-            this.logwrtbtn = new System.Windows.Forms.Button();
-            this.rdlogbtn = new System.Windows.Forms.Button();
             this.stat = new System.Windows.Forms.Label();
-            this.debugbox = new System.Windows.Forms.TextBox();
-            this.clrlogbtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.servostab.SuspendLayout();
             this.debugtab.SuspendLayout();
@@ -75,6 +75,63 @@
             this.servopanel.Name = "servopanel";
             this.servopanel.Size = new System.Drawing.Size(727, 420);
             this.servopanel.TabIndex = 2;
+            // 
+            // debugtab
+            // 
+            this.debugtab.BackColor = System.Drawing.SystemColors.Control;
+            this.debugtab.Controls.Add(this.clrlogbtn);
+            this.debugtab.Controls.Add(this.debugbox);
+            this.debugtab.Controls.Add(this.rdlogbtn);
+            this.debugtab.Controls.Add(this.logwrtbtn);
+            this.debugtab.Location = new System.Drawing.Point(4, 36);
+            this.debugtab.Name = "debugtab";
+            this.debugtab.Padding = new System.Windows.Forms.Padding(3);
+            this.debugtab.Size = new System.Drawing.Size(727, 422);
+            this.debugtab.TabIndex = 1;
+            this.debugtab.Text = "Debug";
+            // 
+            // clrlogbtn
+            // 
+            this.clrlogbtn.Location = new System.Drawing.Point(6, 64);
+            this.clrlogbtn.Name = "clrlogbtn";
+            this.clrlogbtn.Size = new System.Drawing.Size(137, 23);
+            this.clrlogbtn.TabIndex = 3;
+            this.clrlogbtn.Text = "clear log";
+            this.clrlogbtn.UseVisualStyleBackColor = true;
+            this.clrlogbtn.Click += new System.EventHandler(this.clrlogbtn_Click);
+            // 
+            // debugbox
+            // 
+            this.debugbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.debugbox.Font = new System.Drawing.Font("Courier New", 11F);
+            this.debugbox.Location = new System.Drawing.Point(149, 3);
+            this.debugbox.Multiline = true;
+            this.debugbox.Name = "debugbox";
+            this.debugbox.ReadOnly = true;
+            this.debugbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.debugbox.Size = new System.Drawing.Size(575, 416);
+            this.debugbox.TabIndex = 2;
+            // 
+            // rdlogbtn
+            // 
+            this.rdlogbtn.Location = new System.Drawing.Point(6, 35);
+            this.rdlogbtn.Name = "rdlogbtn";
+            this.rdlogbtn.Size = new System.Drawing.Size(137, 23);
+            this.rdlogbtn.TabIndex = 1;
+            this.rdlogbtn.Text = "read log";
+            this.rdlogbtn.UseVisualStyleBackColor = true;
+            this.rdlogbtn.Click += new System.EventHandler(this.rdlogbtn_Click);
+            // 
+            // logwrtbtn
+            // 
+            this.logwrtbtn.Location = new System.Drawing.Point(6, 6);
+            this.logwrtbtn.Name = "logwrtbtn";
+            this.logwrtbtn.Size = new System.Drawing.Size(137, 23);
+            this.logwrtbtn.TabIndex = 0;
+            this.logwrtbtn.Text = "write log entry";
+            this.logwrtbtn.UseVisualStyleBackColor = true;
+            this.logwrtbtn.Click += new System.EventHandler(this.logwrtbtn_Click);
             // 
             // label1
             // 
@@ -119,40 +176,6 @@
             this.cnctbtn.UseVisualStyleBackColor = false;
             this.cnctbtn.Click += new System.EventHandler(this.cnctbtn_Click);
             // 
-            // debugtab
-            // 
-            this.debugtab.BackColor = System.Drawing.SystemColors.Control;
-            this.debugtab.Controls.Add(this.clrlogbtn);
-            this.debugtab.Controls.Add(this.debugbox);
-            this.debugtab.Controls.Add(this.rdlogbtn);
-            this.debugtab.Controls.Add(this.logwrtbtn);
-            this.debugtab.Location = new System.Drawing.Point(4, 36);
-            this.debugtab.Name = "debugtab";
-            this.debugtab.Padding = new System.Windows.Forms.Padding(3);
-            this.debugtab.Size = new System.Drawing.Size(727, 422);
-            this.debugtab.TabIndex = 1;
-            this.debugtab.Text = "Debug";
-            // 
-            // logwrtbtn
-            // 
-            this.logwrtbtn.Location = new System.Drawing.Point(6, 6);
-            this.logwrtbtn.Name = "logwrtbtn";
-            this.logwrtbtn.Size = new System.Drawing.Size(137, 23);
-            this.logwrtbtn.TabIndex = 0;
-            this.logwrtbtn.Text = "write log entry";
-            this.logwrtbtn.UseVisualStyleBackColor = true;
-            this.logwrtbtn.Click += new System.EventHandler(this.logwrtbtn_Click);
-            // 
-            // rdlogbtn
-            // 
-            this.rdlogbtn.Location = new System.Drawing.Point(6, 35);
-            this.rdlogbtn.Name = "rdlogbtn";
-            this.rdlogbtn.Size = new System.Drawing.Size(137, 23);
-            this.rdlogbtn.TabIndex = 1;
-            this.rdlogbtn.Text = "read log";
-            this.rdlogbtn.UseVisualStyleBackColor = true;
-            this.rdlogbtn.Click += new System.EventHandler(this.rdlogbtn_Click);
-            // 
             // stat
             // 
             this.stat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -164,29 +187,6 @@
             this.stat.TabIndex = 2;
             this.stat.Text = "No connection established!";
             this.stat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // debugbox
-            // 
-            this.debugbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.debugbox.Font = new System.Drawing.Font("Courier New", 11F);
-            this.debugbox.Location = new System.Drawing.Point(149, 3);
-            this.debugbox.Multiline = true;
-            this.debugbox.Name = "debugbox";
-            this.debugbox.ReadOnly = true;
-            this.debugbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.debugbox.Size = new System.Drawing.Size(575, 416);
-            this.debugbox.TabIndex = 2;
-            // 
-            // clrlogbtn
-            // 
-            this.clrlogbtn.Location = new System.Drawing.Point(6, 64);
-            this.clrlogbtn.Name = "clrlogbtn";
-            this.clrlogbtn.Size = new System.Drawing.Size(137, 23);
-            this.clrlogbtn.TabIndex = 3;
-            this.clrlogbtn.Text = "clear log";
-            this.clrlogbtn.UseVisualStyleBackColor = true;
-            this.clrlogbtn.Click += new System.EventHandler(this.clrlogbtn_Click);
             // 
             // Main
             // 
@@ -203,6 +203,7 @@
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "Main";
             this.Text = "Project Kira on COM1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.servostab.ResumeLayout(false);
             this.debugtab.ResumeLayout(false);

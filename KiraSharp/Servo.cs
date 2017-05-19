@@ -17,6 +17,7 @@ namespace KiraSharp {
     public partial class Servo : UserControl {
         public event servoevthdlr degchange;
         public event servoevthdlr tmchange;
+        public event servoevthdlr resetclk;
 
         Timer autotime = new Timer();
 
@@ -82,6 +83,11 @@ namespace KiraSharp {
 
         private void posbar_Scroll(object sender, EventArgs e) {
             if (isauto) changed = true;
+        }
+
+        private void resetbtn_Click(object sender, EventArgs e) {
+            try { resetclk.Invoke(servonumber, location, 50); }
+            catch (Exception) { }
         }
     }
 }

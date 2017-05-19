@@ -24,16 +24,7 @@ namespace KiraSharp {
 
                     icnct = true;
 
-                    string[] servos = serial.Getservos();
-
-                    foreach (string sv in servos) {
-                        string svnm = sv.Split(':')[0];
-                        int hmpos = int.Parse(sv.Split(':')[1]);
-
-                        Servo srv = new Servo(svnm, int.Parse(svnm), hmpos);
-                        srv.degchange += Srv_degchange;
-                        servopanel.Controls.Add(srv);
-                    }
+                    srvinit();
                 }
                 else {
                     Text = "Kira#";
@@ -59,6 +50,21 @@ namespace KiraSharp {
             InitializeComponent();
 
             connected = false;
+        }
+
+        private void srvinit() {
+            string[] servos = serial.Getservos();
+
+            foreach (string sv in servos) {
+                string svnm = sv.Split(':')[0];
+                int hmpos = int.Parse(sv.Split(':')[1]);
+
+                Servo srv = new Servo(svnm, int.Parse(svnm), hmpos);
+                srv.degchange += Srv_degchange;
+                servopanel.Controls.Add(srv);
+
+                serial.Setservo(int.Parse(svnm), hmpos, 500);
+            }
         }
 
         private void logwrtbtn_Click(object sender, EventArgs e) {
@@ -95,6 +101,10 @@ namespace KiraSharp {
         private void clrlogbtn_Click(object sender, EventArgs e) {
             Logger.Clear();
             debugbox.Clear();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e) {
+            Logger.Clear();
         }
     }
 }

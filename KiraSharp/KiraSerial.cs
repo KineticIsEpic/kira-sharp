@@ -20,7 +20,7 @@ namespace KiraSharp {
         /// </summary>
         public bool isopen;
 
-        private int[] servopos = new int[9];
+        private int[] servopos = new int[10];
 
         int rate = 9600;
         public string slport = "COM1";
@@ -81,8 +81,19 @@ namespace KiraSharp {
             serial.Open();
             isopen = serial.IsOpen;
 
-            serial.Write("n");
-            devname = serial.ReadTo("\n");
+            try {
+                serial.Write("n");
+                devname = serial.ReadTo("\n");
+            }
+            catch (Exception) {
+                Logger.WriteLine("Serial connection failed. Trying again...");
+
+                serial = new SerialPort(slport, rate);
+                serial.ReadTimeout = 1500;
+                serial.WriteTimeout = 1500;
+                serial.Open();
+                isopen = serial.IsOpen;
+            }
 
             Logger.Write("Connection established \r\nDevice Name: \""
                 + devname + "\"\r\nPort: " + serial.PortName + "\r\nTimeout(R): "

@@ -72,6 +72,7 @@
             this.resetbtn.TabIndex = 3;
             this.resetbtn.Text = "R";
             this.resetbtn.UseVisualStyleBackColor = true;
+            this.resetbtn.Click += new System.EventHandler(this.resetbtn_Click);
             // 
             // autobtn
             // 
